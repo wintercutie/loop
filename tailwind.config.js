@@ -7,16 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'], // Ensure fallback font
-      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)"],
       },
     },
   },
   plugins: [],
 };
-
-

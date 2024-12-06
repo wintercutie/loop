@@ -32,6 +32,9 @@ export default function Page() {
       <h1 className="font-montserrat font-black text-4xl mb-4">
         Black (900) - Page heading 8
       </h1>
+      <h1 className="font-montserrat font-black text-4xl mb-4">
+        Black (900) - rbo
+      </h1>
     </div>
   );
 }

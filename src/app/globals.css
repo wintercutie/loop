@@ -17,5 +17,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Montserrat", sans-serif; /* Use Montserrat as the default font */
+  font-family: "Poppins", sans-serif; /* Use Montserrat as the default font */
 }

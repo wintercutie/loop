@@ -1,5 +1,5 @@
 import "./globals.css";
-import { montserrat } from "../utils/fonts.jsx";
+import { poppins } from "../utils/fonts.jsx";
 
 export const metadata = {
   title: "DataBlitz",
@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${montserrat}`}>{children}</body>
+      <body className={`${poppins}`}>{children}</body>
     </html>
   );
 }

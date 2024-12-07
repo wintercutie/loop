@@ -3,6 +3,7 @@ export default function Page() {
     <div className="p-8">
       <h1 className="font-montserrat font-thin text-4xl mb-4">
         Thin (100) - Page heading 1
+        <h2 className="font-light">tangina</h2>
       </h1>
 
       <h1 className="font-montserrat font-light text-4xl mb-4">

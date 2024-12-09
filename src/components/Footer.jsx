@@ -9,7 +9,7 @@ export default function Footer() {
         {/* Shop Section */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Shop</h3>
-          <ul className="text-sm font-light">
+          <ul className="text-xs font-light">
             <li><a href="#" className="hover:text-[#f4f4f4]">Products</a></li>
             <li><a href="#" className="hover:text-[#f4f4f4]">Games</a></li>
             <li><a href="#" className="hover:text-[#f4f4f4]">Collectibles</a></li>
@@ -20,7 +20,7 @@ export default function Footer() {
         {/* Support Section */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Support</h3>
-          <ul className="text-sm font-light">
+          <ul className="text-xs font-light">
             <li><a href="#" className="hover:text-[#f4f4f4]">Get Help</a></li>
             <li><a href="#" className="hover:text-[#f4f4f4]">DataBlitz Care</a></li>
             <li><a href="#" className="hover:text-[#f4f4f4]">FAQs</a></li>
@@ -30,7 +30,7 @@ export default function Footer() {
         {/* Company Section */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Company</h3>
-          <ul className="text-sm font-light">
+          <ul className="text-xs font-light">
             <li><a href="#" className="hover:text-[#f4f4f4]">About Us</a></li>
             <li><a href="#" className="hover:text-[#f4f4f4]">Values</a></li>
             <li><a href="#" className="hover:text-[#f4f4f4]">Careers</a></li>
@@ -40,15 +40,15 @@ export default function Footer() {
 
         {/* Newsletter Subscription Section */}
         <div className='ml-40'>
-          <h3 className="text-lg font-semibold mb-4">Subscribe to our Newsletter</h3>
+          <h3 className="text-lg font-semibold mb-2">Subscribe to our Newsletter</h3>
           <input
             type="email"
             placeholder="Enter Email Address"
-            className="w-full p-3 mb-4 rounded text-black"
+            className="w-3/4 p-1.5 mb-4 rounded text-black"
           />
           <div className="flex items-center">
             <input type="checkbox" className="mr-2" />
-            <span className="text-sm font-light">
+            <span className="text-xs font-light">
               I want to subscribe to newsletter from DataBlitz. You can unsubscribe anytime. See our <a href="#" className="text-[#f4f4f4]">privacy policy</a>.
             </span>
           </div>

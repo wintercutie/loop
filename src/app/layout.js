@@ -1,6 +1,7 @@
 import "./globals.css";
 import { poppins } from "../utils/fonts.jsx";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "DataBlitz",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins}`}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

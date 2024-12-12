@@ -3,6 +3,7 @@ import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { images } from "@/utils/homepage/constantsHomepage"; // Adjust your import as needed
+import AssuranceElement from "@/components/homepage/AssuranceElement";
 
 const Page = () => {
   const handleDragStart = (e) => e.preventDefault();
@@ -75,10 +76,30 @@ const Page = () => {
       `}</style>
 
       {/* Guarantee Assurance Part */}
-      <div>
-        <h1>puta</h1>
+      <div className="flex justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-3">
+          <AssuranceElement
+            src="/homepage/AssuranceLogo1.png"
+            title="Your Most Trusted Store"
+            description="100% All Brand New & Original Shop with Confidence."
+          />
+          <AssuranceElement
+            src="/homepage/AssuranceLogo2.png"
+            title="Fast Shipping Nationwide"
+            description="Ships in 24 hours! Express and Same-Day Delivery within Metro Manila!"
+          />
+          <AssuranceElement
+            src="/homepage/AssuranceLogo3.png"
+            title="Save on Loyalty Rewards"
+            description="Sign in to start earning Loyalty Rewards Points!"
+          />
+          <AssuranceElement
+            src="/homepage/AssuranceLogo4.png"
+            title="100% Safe and Secure"
+            description="All Transactions are Fully Encrypted with State of the Art Technology!"
+          />
+        </div>
       </div>
-      
     </div>
   );
 };

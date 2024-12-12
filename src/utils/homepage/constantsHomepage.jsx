@@ -9,7 +9,7 @@ export const images = [
     },
     {
         id: 3,
-        src: "/homepage/CoverScreenGame3.png",
+        src: "/homepage/CoverScreenGame3.jpg",
     },
     {
         id: 4,

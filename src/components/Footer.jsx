@@ -44,7 +44,7 @@ export default function Footer() {
           <input
             type="email"
             placeholder="Enter Email Address"
-            className="w-3/4 p-1.5 mb-4 rounded text-black"
+            className="w-3/4 p-1.5 mb-4 rounded text-black h-8 text-sm"
           />
           <div className="flex items-center">
             <input type="checkbox" className="mr-2" />

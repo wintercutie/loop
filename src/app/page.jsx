@@ -1,12 +1,27 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import { images } from "@/utils/homepage/constantsHomepage"; // Adjust your import as needed
 import AssuranceElement from "@/components/homepage/AssuranceElement";
+import { images } from "@/utils/homepage/constantsHomepage";
 
 const Page = () => {
-  const handleDragStart = (e) => e.preventDefault();
+  const [hoveredItem, setHoveredItem] = useState(null); // Track hovered item
+  const [playVideo, setPlayVideo] = useState(false); // Track if video should play
+  const videoTimeoutRef = React.useRef(null); // Timeout reference
+
+  const handleMouseEnter = (id) => {
+    setHoveredItem(id);
+    videoTimeoutRef.current = setTimeout(() => {
+      setPlayVideo(true); // Start playing video after 3 seconds
+    }, 3000);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredItem(null);
+    setPlayVideo(false); // Stop video playback
+    clearTimeout(videoTimeoutRef.current); // Clear timeout
+  };
 
   return (
     <div className="relative h-[200vh]">
@@ -49,14 +64,34 @@ const Page = () => {
         )}
       >
         {images.map((image) => (
-          <div key={image.id} className="h-full">
+          <div
+            key={image.id}
+            className="h-full relative"
+            onMouseEnter={() => handleMouseEnter(image.id)}
+            onMouseLeave={handleMouseLeave}
+          >
+            {/* Image */}
             <div
-              className="h-[70vh] bg-cover bg-center"
+              className={`h-[70vh] bg-cover bg-center ${
+                hoveredItem === image.id && playVideo ? "hidden" : ""
+              }`}
               style={{ backgroundImage: `url(${image.src})` }}
             ></div>
+
+            {/* Video */}
+            {hoveredItem === image.id && playVideo && (
+              <video
+                className="absolute inset-0 h-[70vh] w-full object-cover"
+                src="/homepage/HighlightCarouselVideo3.webm"
+                autoPlay
+                loop
+                muted
+              />
+            )}
           </div>
         ))}
       </AliceCarousel>
+
       <style jsx global>{`
         .alice-carousel__dots {
           position: absolute;
@@ -75,6 +110,7 @@ const Page = () => {
         }
       `}</style>
 
+      {/* Assurance Section */}
       <div className="flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-3">
           <div className="relative pr-6 md:pr-8">

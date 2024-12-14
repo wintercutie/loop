@@ -38,7 +38,7 @@ const Page = () => {
         infinite
         renderPrevButton={({ isDisabled }) => (
           <button
-            className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-blue-900 text-white rounded-full p-3 shadow-md hover:bg-blue-700 ${
+            className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700 ${
               isDisabled ? "opacity-50" : ""
             }`}
           >
@@ -47,7 +47,7 @@ const Page = () => {
         )}
         renderNextButton={({ isDisabled }) => (
           <button
-            className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-blue-900 text-white rounded-full p-3 shadow-md hover:bg-blue-700 ${
+            className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700 ${
               isDisabled ? "opacity-50" : ""
             }`}
           >

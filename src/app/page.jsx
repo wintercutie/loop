@@ -1,27 +1,33 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AssuranceElement from "@/components/homepage/AssuranceElement";
+import Image from "next/image";
 import { images } from "@/utils/homepage/constantsHomepage";
 
+
 const Page = () => {
-  const [hoveredItem, setHoveredItem] = useState(null); // Track hovered item
-  const [playVideo, setPlayVideo] = useState(false); // Track if video should play
-  const videoTimeoutRef = React.useRef(null); // Timeout reference
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [playVideo, setPlayVideo] = useState(false);
+  const videoTimeoutRef = useRef(null);
 
   const handleMouseEnter = (id) => {
     setHoveredItem(id);
     videoTimeoutRef.current = setTimeout(() => {
-      setPlayVideo(true); // Start playing video after 3 seconds
+      setPlayVideo(true);
     }, 3000);
   };
 
   const handleMouseLeave = () => {
     setHoveredItem(null);
-    setPlayVideo(false); // Stop video playback
-    clearTimeout(videoTimeoutRef.current); // Clear timeout
+    setPlayVideo(false);
+    clearTimeout(videoTimeoutRef.current);
   };
+
+  useEffect(() => {
+    return () => clearTimeout(videoTimeoutRef.current);
+  }, []);
 
   return (
     <div className="relative h-[200vh]">
@@ -32,32 +38,18 @@ const Page = () => {
         infinite
         renderPrevButton={({ isDisabled }) => (
           <button
-            className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 ${
+            className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-blue-900 text-white rounded-full p-3 shadow-md hover:bg-blue-700 ${
               isDisabled ? "opacity-50" : ""
             }`}
-            style={{
-              background: "#0D3B66",
-              color: "#fff",
-              border: "none",
-              borderRadius: "20%",
-              padding: "10px",
-            }}
           >
             ◀
           </button>
         )}
         renderNextButton={({ isDisabled }) => (
           <button
-            className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 ${
+            className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-blue-900 text-white rounded-full p-3 shadow-md hover:bg-blue-700 ${
               isDisabled ? "opacity-50" : ""
             }`}
-            style={{
-              background: "#0D3B66",
-              color: "#fff",
-              border: "none",
-              borderRadius: "20%",
-              padding: "10px",
-            }}
           >
             ▶
           </button>
@@ -71,12 +63,16 @@ const Page = () => {
             onMouseLeave={handleMouseLeave}
           >
             {/* Image */}
-            <div
-              className={`h-[70vh] bg-cover bg-center ${
-                hoveredItem === image.id && playVideo ? "hidden" : ""
-              }`}
-              style={{ backgroundImage: `url(${image.src})` }}
-            ></div>
+            {!(hoveredItem === image.id && playVideo) && (
+              <div className="h-[70vh] w-full relative">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            )}
 
             {/* Video */}
             {hoveredItem === image.id && playVideo && (
@@ -86,6 +82,7 @@ const Page = () => {
                 autoPlay
                 loop
                 muted
+                preload="auto"
               />
             )}
           </div>

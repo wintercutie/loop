@@ -32,7 +32,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="relative h-[200vh]">
+    <div className="relative h-[300vh]">
       {/* Highlight Carousel */}
       <AliceCarousel
         autoPlay

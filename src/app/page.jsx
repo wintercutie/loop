@@ -149,7 +149,7 @@ const Page = () => {
       {/* Hot Picks Section */}
       <div className="relative mt-10 flex justify-center">
         {/* Yellow Background Container */}
-        <div className="absolute top-0 w-[60%] h-[240px] bg-[#F4D35E] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
+        <div className="absolute top-0 w-[60%] h-[220px] bg-[#F4D35E] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
 
         {/* Content Section */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-8">
@@ -176,7 +176,7 @@ const Page = () => {
       {/* New Arrivals Section */}
       <div className="relative mt-10 flex justify-center">
         {/* Yellow Background Container */}
-        <div className="absolute top-0 w-[60%] h-[240px] bg-[#FAF0CA] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
+        <div className="absolute top-0 w-[60%] h-[220px] bg-[#FAF0CA] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
 
         {/* Content Section */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-8">

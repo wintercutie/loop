@@ -8,6 +8,8 @@ import { images } from "@/utils/homepage/constantsHomepage";
 import { hot_picks } from "@/utils/homepage/constantsHotpicks";
 import Card from "@/components/homepage/Card";
 import CardWithDetails from "@/components/homepage/CardWithDetails";
+import ProductCarouselItem from "@/components/homepage/ProductCarouselItem";
+import { productsPeri } from "@/utils/homepage/constantsFeaturedPeripherals";
 
 const Page = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -71,8 +73,8 @@ const Page = () => {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  style={{ objectFit: 'cover' }} 
-                  />
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             )}
 
@@ -158,10 +160,7 @@ const Page = () => {
           </h2>
           <div className="flex space-x-4 overflow-x-auto justify-center items-center gap-9">
             <Card key={1} image="/homepage/hotpicks_game1.jpg" />
-            <Card
-              key={2}
-              image="/homepage/hotpicks_game1.jpg"
-            />
+            <Card key={2} image="/homepage/hotpicks_game1.jpg" />
             <Card key={3} image="/homepage/hotpicks_game1.jpg" />
             <Card key={4} image="/homepage/hotpicks_game1.jpg" />
             <Card
@@ -184,13 +183,70 @@ const Page = () => {
             NEW ARRIVALS
           </h2>
           <div className="flex space-x-4 overflow-x-auto justify-center items-center gap-9">
-            <CardWithDetails key={1} name="Mouse Corsair" price="123.00" image="/homepage/product_sample.webp"/>
-            <CardWithDetails key={2} name="Mouse Corsair" price="123.00" image="/homepage/product_sample.webp"/>
-            <CardWithDetails key={3} name="Mouse Corsair" price="123.00" image="/homepage/product_sample.webp"/>
-            <CardWithDetails key={4} name="Mouse Corsair" price="123.00" image="/homepage/product_sample.webp"/>
-            <CardWithDetails key={5} name="Mouse Corsair" price="123.00" image="/homepage/product_sample.webp"/>
+            <CardWithDetails
+              key={1}
+              name="Mouse Corsair"
+              price="123.00"
+              image="/homepage/product_sample.webp"
+            />
+            <CardWithDetails
+              key={2}
+              name="Mouse Corsair"
+              price="123.00"
+              image="/homepage/product_sample.webp"
+            />
+            <CardWithDetails
+              key={3}
+              name="Mouse Corsair"
+              price="123.00"
+              image="/homepage/product_sample.webp"
+            />
+            <CardWithDetails
+              key={4}
+              name="Mouse Corsair"
+              price="123.00"
+              image="/homepage/product_sample.webp"
+            />
+            <CardWithDetails
+              key={5}
+              name="Mouse Corsair"
+              price="123.00"
+              image="/homepage/product_sample.webp"
+            />
           </div>
         </div>
+      </div>
+
+      {/* Peripherals Featured */}
+      <div className="relative mt-10 w-[70%] mx-auto">
+        <h1 className="text-2xl font-bold mb-6 text-center">
+          Featured Peripherals
+        </h1>
+        <AliceCarousel
+          autoPlay
+          autoPlayInterval={3000}
+          infinite
+          disableButtonsControls={false}
+          disableDotsControls={false}
+          responsive={{
+            0: { items: 1 },
+            1024: { items: 1 }, // One item per slide
+          }}
+          renderPrevButton={() => (
+            <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
+              ◀
+            </button>
+          )}
+          renderNextButton={() => (
+            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
+              ▶
+            </button>
+          )}
+        >
+          {productsPeri.map((product, index) => (
+            <ProductCarouselItem key={index} {...product} />
+          ))}
+        </AliceCarousel>
       </div>
     </div>
   );

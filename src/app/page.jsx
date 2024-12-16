@@ -10,6 +10,8 @@ import Card from "@/components/homepage/Card";
 import CardWithDetails from "@/components/homepage/CardWithDetails";
 import ProductCarouselItem from "@/components/homepage/ProductCarouselItem";
 import { productsPeri } from "@/utils/homepage/constantsFeaturedPeripherals";
+import { imagePaths } from "@/utils/homepage/constantsBrand";
+import BrandCard from "@/components/homepage/BrandCard";
 
 const Page = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -34,7 +36,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="relative h-[300vh]">
+    <div className="relative h-[400vh]">
       {/* Highlight Carousel */}
       <AliceCarousel
         autoPlay
@@ -247,6 +249,20 @@ const Page = () => {
             <ProductCarouselItem key={index} {...product} />
           ))}
         </AliceCarousel>
+      </div>
+
+      {/* Brand Feature */}
+      <div className="container mx-auto px-48 pt-20">
+        {/* 3x2 Grid Layout */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+          {imagePaths.map((imagePath, index) => (
+            <BrandCard
+              key={index}
+              imagePath={imagePath}
+              altText={`Image ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

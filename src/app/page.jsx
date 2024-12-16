@@ -219,7 +219,7 @@ const Page = () => {
 
       {/* Peripherals Featured */}
       <div className="relative mt-10 w-[70%] mx-auto">
-        <h1 className="text-2xl font-bold mb-6 text-center">
+        <h1 className="text-2xl font-bold text-center tracking-widest">
           Featured Peripherals
         </h1>
         <AliceCarousel

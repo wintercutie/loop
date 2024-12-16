@@ -1,6 +1,6 @@
 export const productsPeri = [
     {
-      image: "/homepage/FeaturedPeripherals1.jpeg",
+      image: "/homepage/FeaturedPeripherals1.webp",
       name: "Razer Deathadder V3 Pro Ultra-Lightweight Wireless Ergonomic Esports Gaming Mouse (Faker Edition)",
       price: "8,495.00",
       rating: "4.5",
@@ -11,7 +11,7 @@ export const productsPeri = [
       ],
     },
     {
-      image: "/homepage/FeaturedPeripherals1.jpeg",
+      image: "/homepage/product_sample.webp",
       name: "Logitech MX Mechanical Keyboard",
       price: "12,999.00",
       rating: "4.8",

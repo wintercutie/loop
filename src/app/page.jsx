@@ -251,6 +251,70 @@ const Page = () => {
         </AliceCarousel>
       </div>
 
+      {/* Games Featured */}
+      <div className="relative mt-10 w-[70%] mx-auto">
+        <h1 className="text-2xl font-bold text-center tracking-widest">
+          Featured Games
+        </h1>
+        <AliceCarousel
+          autoPlay
+          autoPlayInterval={3000}
+          infinite
+          disableButtonsControls={false}
+          disableDotsControls={false}
+          responsive={{
+            0: { items: 1 },
+            1024: { items: 1 }, // One item per slide
+          }}
+          renderPrevButton={() => (
+            <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
+              ◀
+            </button>
+          )}
+          renderNextButton={() => (
+            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
+              ▶
+            </button>
+          )}
+        >
+          {productsPeri.map((product, index) => (
+            <ProductCarouselItem key={index} {...product} />
+          ))}
+        </AliceCarousel>
+      </div>
+
+      {/* Collectibles Featured */}
+      <div className="relative mt-10 w-[70%] mx-auto">
+        <h1 className="text-2xl font-bold text-center tracking-widest">
+          Featured Collectibles
+        </h1>
+        <AliceCarousel
+          autoPlay
+          autoPlayInterval={3000}
+          infinite
+          disableButtonsControls={false}
+          disableDotsControls={false}
+          responsive={{
+            0: { items: 1 },
+            1024: { items: 1 }, // One item per slide
+          }}
+          renderPrevButton={() => (
+            <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
+              ◀
+            </button>
+          )}
+          renderNextButton={() => (
+            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
+              ▶
+            </button>
+          )}
+        >
+          {productsPeri.map((product, index) => (
+            <ProductCarouselItem key={index} {...product} />
+          ))}
+        </AliceCarousel>
+      </div>
+
       {/* Brand Feature */}
       <div className="container mx-auto px-48 pt-20">
         {/* 3x2 Grid Layout */}

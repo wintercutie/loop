@@ -27,12 +27,7 @@ const ProductCarouselItem = ({ image, name, price, rating, sold, description }) 
             <li key={index}>{desc}</li>
           ))}
         </ul>
-        <a
-          href="#"
-          className="text-blue-600 font-semibold mt-2 hover:underline"
-        >
-          View more.
-        </a>
+        
       </div>
     </div>
   );

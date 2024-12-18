@@ -12,6 +12,8 @@ import ProductCarouselItem from "@/components/homepage/ProductCarouselItem";
 import { productsPeri } from "@/utils/homepage/constantsFeaturedPeripherals";
 import { imagePaths } from "@/utils/homepage/constantsBrand";
 import BrandCard from "@/components/homepage/BrandCard";
+import { products } from "@/utils/homepage/constantsProductGrid";
+import ProductGrid from "@/components/homepage/ProductGrid";  
 
 const Page = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -36,7 +38,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="relative h-[400vh]">
+    <div className="relative h-[820vh]">
       {/* Highlight Carousel */}
       <AliceCarousel
         autoPlay
@@ -251,6 +253,11 @@ const Page = () => {
         </AliceCarousel>
       </div>
 
+      {/* Peripherals Product Grid */}
+      <div className="container mx-auto justify-center flex mb-32">
+        <ProductGrid products={products} />
+      </div>
+
       {/* Games Featured */}
       <div className="relative mt-10 w-[70%] mx-auto">
         <h1 className="text-2xl font-bold text-center tracking-widest">
@@ -281,6 +288,11 @@ const Page = () => {
             <ProductCarouselItem key={index} {...product} />
           ))}
         </AliceCarousel>
+      </div>
+
+      {/* Games Product Grid */}
+      <div className="container mx-auto justify-center flex mb-32">
+        <ProductGrid products={products} />
       </div>
 
       {/* Collectibles Featured */}
@@ -315,8 +327,13 @@ const Page = () => {
         </AliceCarousel>
       </div>
 
+      {/* Collectibles Product Grid */}
+      <div className="container mx-auto justify-center flex mb-20">
+        <ProductGrid products={products} />
+      </div>
+
       {/* Brand Feature */}
-      <div className="container mx-auto px-48 pt-20">
+      <div className="container mx-auto px-48 pt-10">
         {/* 3x2 Grid Layout */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
           {imagePaths.map((imagePath, index) => (
@@ -328,6 +345,8 @@ const Page = () => {
           ))}
         </div>
       </div>
+
+      
     </div>
   );
 };

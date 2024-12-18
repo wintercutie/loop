@@ -1,6 +1,7 @@
 // src/components/homepage/BrandCard.jsx
 import React from "react";
 
+{/* Rectangle Laying down card for brands */}
 const BrandCard = ({ imagePath, altText }) => {
   return (
     <div

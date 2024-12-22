@@ -49,30 +49,4 @@ export const products = [
     price: 90,
     image: "/homepage/product_sample.webp",
   },
-  {
-    name: "Digital Graphics Drawing Tablet",
-    price: 120,
-    image: "/homepage/product_sample.webp",
-  },
-  {
-    name: "Universal Laptop Docking Station",
-    price: 180,
-    image: "/homepage/product_sample.webp",
-  },
-  {
-    name: "Studio Condenser Microphone",
-    price: 90,
-    image: "/homepage/product_sample.webp",
-  },
-  {
-    name: "Digital Graphics Drawing Tablet",
-    price: 120,
-    image: "/homepage/product_sample.webp",
-  },
-  {
-    name: "Universal Laptop Docking Station",
-    price: 180,
-    image: "/homepage/product_sample.webp",
-  },
-  
 ];

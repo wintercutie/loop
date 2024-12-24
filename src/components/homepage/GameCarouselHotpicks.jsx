@@ -100,13 +100,13 @@ const GameCarouselHotpicks = ({ games }) => {
         </div>
         <button
           onClick={goToPrev}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white cursor-pointer hover:bg-opacity-75"
         >
           ◀
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white cursor-pointer hover:bg-opacity-75"
         >
           ▶
         </button>

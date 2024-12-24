@@ -60,7 +60,7 @@ const GameCarousel = ({ games }) => {
         {/* Previous Button */}
         <div
           onClick={prevSlide}
-          className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white cursor-pointer hover:bg-opacity-75"
+          className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
         >
           <span className="text-2xl">{"<"}</span>
         </div>
@@ -68,7 +68,7 @@ const GameCarousel = ({ games }) => {
         {/* Next Button */}
         <div
           onClick={nextSlide}
-          className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white cursor-pointer hover:bg-opacity-75"
+          className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
         >
           <span className="text-2xl">{">"}</span>
         </div>

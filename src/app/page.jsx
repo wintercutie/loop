@@ -5,8 +5,6 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import AssuranceElement from "@/components/homepage/AssuranceElement";
 import Image from "next/image";
 import { images } from "@/utils/homepage/constantsHomepage";
-import { hot_picks } from "@/utils/homepage/constantsHotpicks";
-import Card from "@/components/homepage/Card";
 import CardWithDetails from "@/components/homepage/CardWithDetails";
 import ProductCarouselItem from "@/components/homepage/ProductCarouselItem";
 import { productsPeri } from "@/utils/homepage/constantsFeaturedPeripherals";
@@ -15,6 +13,9 @@ import BrandCard from "@/components/homepage/BrandCard";
 import { products } from "@/utils/homepage/constantsProductGrid";
 import ProductGrid from "@/components/homepage/ProductGrid";
 import CategoryCatalog from "@/components/homepage/CategoryCatalog";
+import { FGames } from "@/utils/homepage/constantsGameCarousel";
+import GameCarousel from "@/components/homepage/GameCarousel";
+import GameCarouselHotpicks from "@/components/homepage/GameCarouselHotpicks";
 
 const Page = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -155,7 +156,7 @@ const Page = () => {
 
       {/* Category Catalog */}
       <div className="bg-[#FAF9F6] py-10">
-        <CategoryCatalog></CategoryCatalog>
+        <CategoryCatalog games={FGames}></CategoryCatalog>
       </div>
 
       {/* New Arrivals Section */}
@@ -243,57 +244,21 @@ const Page = () => {
       {/* Hot Picks Section */}
       <div className="relative mt-10 flex justify-center">
         {/* Yellow Background Container */}
-        <div className="absolute top-0 w-[60%] h-[220px] bg-[#F4D35E] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
-
-        {/* Content Section */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-8">
-          <h2 className="text-3xl font-bold mb-6 text-black tracking-widest text-left">
+        <div className="absolute top-0 w-[60%] h-[250px] bg-[#F4D35E] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
+        <div className="relative z-10 max-w-6xl mx-auto px-10 py-8">
+          <h2 className="text-3xl font-bold text-black tracking-widest text-left">
             HOT PICKS
           </h2>
-          <div className="flex space-x-4 overflow-x-auto justify-center items-center gap-9">
-            <Card key={1} image="/homepage/hotpicks_game1.jpg" />
-            <Card key={2} image="/homepage/hotpicks_game1.jpg" />
-            <Card key={3} image="/homepage/hotpicks_game1.jpg" />
-            <Card key={4} image="/homepage/hotpicks_game1.jpg" />
-            <Card
-              key={5}
-              title="Cyberpunk 2077"
-              image="/homepage/hotpicks_game1.jpg"
-            />
-          </div>
+          <GameCarouselHotpicks games={FGames} />
         </div>
       </div>
 
-      {/* Games Featured */}
-      <div className="relative mt-10 w-[70%] mx-auto">
+      {/* Featured Game Carousel */}
+      <div>
         <h1 className="text-2xl font-bold text-center tracking-widest">
           Featured Games
         </h1>
-        <AliceCarousel
-          autoPlay
-          autoPlayInterval={3000}
-          infinite
-          disableButtonsControls={false}
-          disableDotsControls={false}
-          responsive={{
-            0: { items: 1 },
-            1024: { items: 1 }, // One item per slide
-          }}
-          renderPrevButton={() => (
-            <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
-              ◀
-            </button>
-          )}
-          renderNextButton={() => (
-            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 hover:bg-blue-700">
-              ▶
-            </button>
-          )}
-        >
-          {productsPeri.map((product, index) => (
-            <ProductCarouselItem key={index} {...product} />
-          ))}
-        </AliceCarousel>
+        <GameCarousel games={FGames} />
       </div>
 
       {/* Games Product Grid */}

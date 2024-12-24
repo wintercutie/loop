@@ -118,7 +118,7 @@ const Page = () => {
 
       {/* Assurance Section */}
       <div className="flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-3">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-3 pb-10">
           <div className="relative pr-6 md:pr-8">
             <AssuranceElement
               src="/homepage/AssuranceLogo1.png"
@@ -154,7 +154,7 @@ const Page = () => {
       </div>
 
       {/* Category Catalog */}
-      <div>
+      <div className="bg-[#FAF9F6] py-10">
         <CategoryCatalog></CategoryCatalog>
       </div>
 
@@ -339,16 +339,18 @@ const Page = () => {
       </div>
 
       {/* Brand Feature */}
-      <div className="container mx-auto px-48 pt-10">
-        {/* 3x2 Grid Layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-          {imagePaths.map((imagePath, index) => (
-            <BrandCard
-              key={index}
-              imagePath={imagePath}
-              altText={`Image ${index + 1}`}
-            />
-          ))}
+      <div className="bg-[#FAF9F6]">
+        <div className="container mx-auto px-48 py-10">
+          {/* 3x2 Grid Layout */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+            {imagePaths.map((imagePath, index) => (
+              <BrandCard
+                key={index}
+                imagePath={imagePath}
+                altText={`Image ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

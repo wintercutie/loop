@@ -8,18 +8,32 @@ const GameCarousel = ({ games }) => {
   const nextSlide = () => {
     if (carouselRef.current) {
       const maxScrollLeft = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
-      const newScrollPosition = Math.min(scrollPosition + carouselRef.current.clientWidth, maxScrollLeft); // Scroll by width of each item
-      carouselRef.current.scrollTo({ left: newScrollPosition, behavior: "smooth" });
-      setScrollPosition(newScrollPosition);
+
+      // Check if at the end, reset to the beginning
+      if (scrollPosition >= maxScrollLeft) {
+        carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        setScrollPosition(0);
+      } else {
+        const newScrollPosition = Math.min(scrollPosition + carouselRef.current.clientWidth, maxScrollLeft);
+        carouselRef.current.scrollTo({ left: newScrollPosition, behavior: "smooth" });
+        setScrollPosition(newScrollPosition);
+      }
     }
   };
 
   // Function to scroll to the previous item
   const prevSlide = () => {
     if (carouselRef.current) {
-      const newScrollPosition = Math.max(scrollPosition - carouselRef.current.clientWidth, 0); // Scroll back by width of each item
-      carouselRef.current.scrollTo({ left: newScrollPosition, behavior: "smooth" });
-      setScrollPosition(newScrollPosition);
+      // Check if at the beginning, reset to the end
+      if (scrollPosition <= 0) {
+        const maxScrollLeft = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
+        carouselRef.current.scrollTo({ left: maxScrollLeft, behavior: "smooth" });
+        setScrollPosition(maxScrollLeft);
+      } else {
+        const newScrollPosition = Math.max(scrollPosition - carouselRef.current.clientWidth, 0);
+        carouselRef.current.scrollTo({ left: newScrollPosition, behavior: "smooth" });
+        setScrollPosition(newScrollPosition);
+      }
     }
   };
 
@@ -44,7 +58,7 @@ const GameCarousel = ({ games }) => {
 
               {/* Game Information (Right Side - Revealed on Hover) */}
               <div className="absolute inset-0 bg-black bg-opacity-60 w-0 group-hover:w-1/4 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-start px-6">
-                <div className="text-white space-y-4 text-left">
+                <div className="text-white space-y-4 text-left pl-4">
                   <h2 className="text-2xl font-bold">{game.name}</h2>
                   <p className="text-lg font-semibold">{game.genre}</p>
                   <p className="text-sm">Release: 2024</p> {/* Replace with dynamic release date */}
@@ -60,17 +74,17 @@ const GameCarousel = ({ games }) => {
         {/* Previous Button */}
         <div
           onClick={prevSlide}
-          className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
+          className="absolute bottom-4 right-20 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
         >
-          <span className="text-2xl">{"<"}</span>
+          <span className="text-xl">{"<"}</span>
         </div>
 
         {/* Next Button */}
         <div
           onClick={nextSlide}
-          className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
+          className="absolute bottom-4 right-4 bg-blue-900 text-white rounded-md p-3 shadow-md hover:bg-blue-700"
         >
-          <span className="text-2xl">{">"}</span>
+          <span className="text-xl">{">"}</span>
         </div>
       </div>
     </div>

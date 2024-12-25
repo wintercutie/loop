@@ -106,7 +106,7 @@ const GameCarouselHotpicks = ({ games }) => {
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white cursor-pointer hover:bg-opacity-75"
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-2 text-white cursor-pointer hover:bg-opacity-75"
         >
           ▶
         </button>

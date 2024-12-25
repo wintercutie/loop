@@ -40,7 +40,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="relative h-[820vh]">
+    <div className="min-h-screen flex flex-col">
       {/* Highlight Carousel */}
       <AliceCarousel
         autoPlay
@@ -305,7 +305,7 @@ const Page = () => {
 
       {/* Brand Feature */}
       <div className="bg-[#FAF9F6]">
-        <div className="container mx-auto px-48 py-10">
+        <div className="container mx-auto px-48 py-10 pb-12">
           {/* 3x2 Grid Layout */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
             {imagePaths.map((imagePath, index) => (

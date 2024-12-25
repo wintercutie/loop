@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const GameCarousel = ({ games }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -36,6 +36,15 @@ const GameCarousel = ({ games }) => {
       }
     }
   };
+
+  // Auto-scroll functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000); // Adjust the interval time (in milliseconds) as needed
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, [scrollPosition]);
 
   return (
     <div className="relative flex justify-center py-6">

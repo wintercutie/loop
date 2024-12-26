@@ -12,10 +12,11 @@ import { imagePaths } from "@/utils/homepage/constantsBrand";
 import BrandCard from "@/components/homepage/BrandCard";
 import { products } from "@/utils/homepage/constantsProductGrid";
 import ProductGrid from "@/components/homepage/ProductGrid";
-import CategoryCatalog from "@/components/homepage/CategoryCatalog";
+import CategoryCatalogExpi from "@/components/homepage/CategoryCatalogExpi";
 import { FGames } from "@/utils/homepage/constantsGameCarousel";
 import GameCarousel from "@/components/homepage/GameCarousel";
 import GameCarouselHotpicks from "@/components/homepage/GameCarouselHotpicks";
+import CategoryCatalog from "@/components/homepage/CategoryCatalog";
 
 const Page = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -154,9 +155,10 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Category Catalog */}
-      <div className="bg-[#FAF9F6] py-10">
-        <CategoryCatalog games={FGames}></CategoryCatalog>
+      {/* DEBUG Category Catalog */}
+      <div className="bg-[#FAF9F6]">
+        {/* <CategoryCatalogExpi games={FGames}></CategoryCatalogExpi> */}
+        <CategoryCatalog></CategoryCatalog>
       </div>
 
       {/* New Arrivals Section */}
@@ -241,29 +243,31 @@ const Page = () => {
         <ProductGrid products={products} />
       </div>
 
-      {/* Hot Picks Section */}
-      <div className="relative mt-10 flex justify-center">
-        {/* Yellow Background Container */}
-        <div className="absolute top-0 w-[60%] h-[250px] bg-[#F4D35E] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
-        <div className="relative z-10 max-w-6xl mx-auto px-10 py-8">
-          <h2 className="text-3xl font-bold text-black tracking-widest text-left">
-            HOT PICKS
-          </h2>
-          <GameCarouselHotpicks games={FGames} />
+      <div className="bg-[#FAF9F6]">
+        {/* Hot Picks Section */}
+        <div className="relative mt-10 flex justify-center">
+          {/* Yellow Background Container */}
+          <div className="absolute top-0 w-[60%] h-[250px] bg-[#F4D35E] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
+          <div className="relative z-10 max-w-6xl mx-auto px-10 py-8">
+            <h2 className="text-3xl font-bold text-black tracking-widest text-left">
+              HOT PICKS
+            </h2>
+            <GameCarouselHotpicks games={FGames} />
+          </div>
         </div>
-      </div>
 
-      {/* Featured Game Carousel */}
-      <div>
-        <h1 className="text-2xl font-bold text-center tracking-widest">
-          Featured Games
-        </h1>
-        <GameCarousel games={FGames} />
-      </div>
+        {/* Featured Game Carousel */}
+        <div>
+          <h1 className="text-2xl font-bold text-center tracking-widest">
+            Featured Games
+          </h1>
+          <GameCarousel games={FGames} />
+        </div>
 
-      {/* Games Product Grid */}
-      <div className="container mx-auto justify-center flex mb-32">
-        <ProductGrid products={products} />
+        {/* Games Product Grid */}
+        <div className="container mx-auto justify-center flex mb-32">
+          <ProductGrid products={products} />
+        </div>
       </div>
 
       {/* Collectibles Featured */}

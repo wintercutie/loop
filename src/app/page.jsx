@@ -17,6 +17,7 @@ import { FGames } from "@/utils/homepage/constantsGameCarousel";
 import GameCarousel from "@/components/homepage/GameCarousel";
 import GameCarouselHotpicks from "@/components/homepage/GameCarouselHotpicks";
 import CategoryCatalog from "@/components/homepage/CategoryCatalog";
+import NewArrivals from "@/components/homepage/NewArrivals";
 
 const Page = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
@@ -155,13 +156,17 @@ const Page = () => {
         </div>
       </div>
 
-      {/* DEBUG Category Catalog */}
+      {/* Category Catalog */}
       <div className="bg-[#FAF9F6]">
         {/* <CategoryCatalogExpi games={FGames}></CategoryCatalogExpi> */}
         <CategoryCatalog></CategoryCatalog>
       </div>
 
-      {/* New Arrivals Section */}
+      {/* DEBUG New Arrivals Section */}
+      <div>
+        <NewArrivals></NewArrivals>
+      </div>
+
       <div className="relative mt-10 flex justify-center">
         {/* Yellow Background Container */}
         <div className="absolute top-0 w-[60%] h-[220px] bg-[#FAF0CA] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>

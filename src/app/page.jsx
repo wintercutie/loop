@@ -162,53 +162,11 @@ const Page = () => {
         <CategoryCatalog></CategoryCatalog>
       </div>
 
-      {/* DEBUG New Arrivals Section */}
-      <div>
-        <NewArrivals></NewArrivals>
-      </div>
-
+      {/* New Arrivals Section */}
       <div className="relative mt-10 flex justify-center">
-        {/* Yellow Background Container */}
-        <div className="absolute top-0 w-[60%] h-[220px] bg-[#FAF0CA] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
-
-        {/* Content Section */}
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-8">
-          <h2 className="text-3xl font-bold mb-6 text-black tracking-widest text-left">
-            NEW ARRIVALS
-          </h2>
-          <div className="flex space-x-4 overflow-x-auto justify-center items-center gap-9">
-            <CardWithDetails
-              key={1}
-              name="Mouse Corsair"
-              price="123.00"
-              image="/homepage/product_sample.webp"
-            />
-            <CardWithDetails
-              key={2}
-              name="Mouse Corsair"
-              price="123.00"
-              image="/homepage/product_sample.webp"
-            />
-            <CardWithDetails
-              key={3}
-              name="Mouse Corsair"
-              price="123.00"
-              image="/homepage/product_sample.webp"
-            />
-            <CardWithDetails
-              key={4}
-              name="Mouse Corsair"
-              price="123.00"
-              image="/homepage/product_sample.webp"
-            />
-            <CardWithDetails
-              key={5}
-              name="Mouse Corsair"
-              price="123.00"
-              image="/homepage/product_sample.webp"
-            />
-          </div>
-        </div>
+        {/* Background Container */}
+        <div className="absolute top-0 w-[60%] h-[200px] bg-[#FAF0CA] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
+        <NewArrivals></NewArrivals>
       </div>
 
       {/* Peripherals Featured */}
@@ -254,7 +212,7 @@ const Page = () => {
           {/* Yellow Background Container */}
           <div className="absolute top-0 w-[60%] h-[250px] bg-[#F4D35E] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
           <div className="relative z-10 max-w-6xl mx-auto px-10 py-8">
-            <h2 className="text-3xl font-bold text-black tracking-widest text-left">
+            <h2 className="text-3xl font-bold text-black tracking-widest text-center">
               HOT PICKS
             </h2>
             <GameCarouselHotpicks games={FGames} />

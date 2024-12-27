@@ -17,7 +17,8 @@
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.1.15"
+    "swiper": "^11.1.15",
+    "tailwind-scrollbar-hide": "^2.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

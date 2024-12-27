@@ -11,10 +11,10 @@ const ProductCard = ({ name, price, image }) => {
         alt={name}
         width={200}
         height={200}
-        className="w-full h-auto"
+        className="w-full h-32 object-contain"
       />
       {/* Product Info */}
-      <div className="mt-2">
+      <div className="mt-2 flex-grow">
         <h3
           className="text-xs font-light text-gray-700 text-left overflow-hidden"
           style={{
@@ -32,5 +32,6 @@ const ProductCard = ({ name, price, image }) => {
     </div>
   );
 };
+
 
 export default ProductCard;

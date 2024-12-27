@@ -120,7 +120,7 @@ const Page = () => {
       `}</style>
 
       {/* Assurance Section */}
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 px-3 pb-10">
           <div className="relative pr-6 md:pr-8">
             <AssuranceElement
@@ -156,18 +156,20 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Category Catalog */}
-      <div className="bg-[#FAF9F6]">
-        {/* <CategoryCatalogExpi games={FGames}></CategoryCatalogExpi> */}
-        <CategoryCatalog></CategoryCatalog>
-      </div>
-
       {/* New Arrivals Section */}
       <div className="relative mt-10 flex justify-center">
         {/* Background Container */}
         <div className="absolute top-0 w-[60%] h-[200px] bg-[#FAF0CA] left-1/2 -translate-x-1/2 z-0 rounded-2xl"></div>
         <NewArrivals></NewArrivals>
       </div>
+
+      {/* Category Catalog */}
+      <div className="bg-[#FAF9F6]">
+        {/* <CategoryCatalogExpi games={FGames}></CategoryCatalogExpi> */}
+        <CategoryCatalog></CategoryCatalog>
+      </div>
+
+      
 
       {/* Peripherals Featured */}
       <div className="relative mt-10 w-[70%] mx-auto">

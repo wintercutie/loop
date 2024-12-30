@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { FcGoogle } from "react-icons/fc"; // Google icon
+import { FaFacebook } from "react-icons/fa"; // Facebook icon
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -34,19 +37,24 @@ const LoginPage = () => {
           muted
           loop
         ></video>
-        {/* Optional Overlay */}
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-30"></div>
       </div>
 
       {/* Login Form Section */}
-      <div className="flex-1 w-1/4 flex justify-center bg-white shadow-lg">
+      <div className="flex-1 w-1/4 flex justify-center bg-white shadow-lg mt-20">
         <div className="w-full max-w-md p-8">
-          <h2 className="text-4xl font-semibold text-left mt-6 mb-3">Sign in</h2>
+          <h2 className="text-4xl font-semibold text-left mt-6 mb-3">
+            Sign in
+          </h2>
 
-          {/* New User? Create An account*/}
+          {/* New User? Create An Account */}
           <div className="flex mb-12 gap-2">
-            <h2>New User? </h2>
-            <h2 className="">Create an Account</h2>
+            <h2 className="font-light">Don't have an account?</h2>
+            <Link href="/signup">
+              <h2 className="text-[#0D3B66] font-medium cursor-pointer hover:underline">
+                Create an Account
+              </h2>
+            </Link>
           </div>
 
           {error && (
@@ -89,17 +97,41 @@ const LoginPage = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="w-full bg-[#0D3B66] text-white py-2 rounded-lg hover:bg-[#145EA8] transition-colors"
             >
               Login
             </button>
           </form>
           <p className="text-center text-sm text-gray-600 mt-4">
-            Don't have an account?{" "}
-            <a href="/signup" className="text-blue-600 hover:underline">
-              Sign up
+            <a
+              href="/login"
+              className="text-[#0D3B66] hover:underline font-light text-center"
+            >
+              Forgot Password?
             </a>
           </p>
+
+          {/* Social Login Buttons */}
+          <div className="mt-16 space-y-4">
+            <button
+              type="button"
+              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-full shadow-sm hover:bg-gray-100 transition-colors"
+              onClick={() => alert("Google login clicked!")}
+            >
+              <FcGoogle className="h-6 w-6 mr-2" />
+              <span className="text-md leading-none text-gray-700">Continue with Google</span>
+            </button>
+            <button
+              type="button"
+              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-full shadow-sm hover:bg-gray-100 transition-colors"
+              onClick={() => alert("Facebook login clicked!")}
+            >
+              <FaFacebook className="h-6 w-6 mr-2 text-blue-600" />
+              <span className="text-md leading-none text-gray-700">
+                Continue with Facebook
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

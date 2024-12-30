@@ -20,7 +20,7 @@ const LoginPage = () => {
     const isLoginSuccessful =
       email === "user@example.com" && password === "password123";
     if (isLoginSuccessful) {
-      router.push("/dashboard"); // Redirect to a dashboard page on successful login
+      router.push("/"); // Redirect to a dashboard page on successful login
     } else {
       setError("Invalid email or password");
     }

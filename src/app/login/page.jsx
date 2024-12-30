@@ -49,7 +49,7 @@ const LoginPage = () => {
 
           {/* New User? Create An Account */}
           <div className="flex mb-12 gap-2">
-            <h2 className="font-light">Don't have an account?</h2>
+            <h2 className="font-light">Don&apos;t have an account?</h2>
             <Link href="/signup">
               <h2 className="text-[#0D3B66] font-medium cursor-pointer hover:underline">
                 Create an Account

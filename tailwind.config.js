@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const scrollbarHide = require('tailwind-scrollbar-hide');
 
 module.exports = {
   content: [
@@ -18,5 +17,5 @@ module.exports = {
       },
     },
   },
-  plugins: [scrollbarHide],
+  plugins: [require('tailwind-scrollbar-hide')],
 };

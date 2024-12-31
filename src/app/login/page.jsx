@@ -115,7 +115,7 @@ const LoginPage = () => {
           <div className="mt-16 space-y-4">
             <button
               type="button"
-              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-full shadow-sm hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-md shadow-sm hover:bg-gray-100 transition-colors"
               onClick={() => alert("Google login clicked!")}
             >
               <FcGoogle className="h-6 w-6 mr-2" />
@@ -123,7 +123,7 @@ const LoginPage = () => {
             </button>
             <button
               type="button"
-              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-full shadow-sm hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-md shadow-sm hover:bg-gray-100 transition-colors"
               onClick={() => alert("Facebook login clicked!")}
             >
               <FaFacebook className="h-6 w-6 mr-2 text-blue-600" />

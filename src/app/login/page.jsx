@@ -13,7 +13,7 @@ const LoginPage = () => {
   const router = useRouter();
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent form from refreshing
     setError(null);
 
     // Simulate API login call
@@ -43,9 +43,7 @@ const LoginPage = () => {
       {/* Login Form Section */}
       <div className="flex-1 w-1/4 flex justify-center bg-white shadow-lg mt-20">
         <div className="w-full max-w-md p-8">
-          <h2 className="text-4xl font-semibold text-left mt-6 mb-3">
-            Sign in
-          </h2>
+          <h2 className="text-4xl font-semibold text-left mt-6 mb-3">Sign in</h2>
 
           {/* New User? Create An Account */}
           <div className="flex mb-12 gap-2">
@@ -57,15 +55,12 @@ const LoginPage = () => {
             </Link>
           </div>
 
-          {error && (
-            <div className="text-red-500 text-center mb-4">{error}</div>
-          )}
+          {error && <div className="text-red-500 text-center mb-4">{error}</div>}
+
+          {/* Form */}
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email Address
               </label>
               <input
@@ -79,10 +74,7 @@ const LoginPage = () => {
               />
             </div>
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
-              >
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <input
@@ -95,18 +87,19 @@ const LoginPage = () => {
                 required
               />
             </div>
-            <button
-              type="submit"
-              className="w-full bg-[#0D3B66] text-white py-2 rounded-lg hover:bg-[#145EA8] transition-colors"
-            >
-              Login
-            </button>
+
+            <div className="mt-12">
+              <button
+                type="submit" // Ensure this button submits the form
+                className="w-full bg-[#0D3B66] text-white py-2 rounded-lg hover:bg-[#145EA8] transition-colors"
+              >
+                Login
+              </button>
+            </div>
           </form>
+
           <p className="text-center text-sm text-gray-600 mt-4">
-            <a
-              href="/login"
-              className="text-[#0D3B66] hover:underline font-light text-center"
-            >
+            <a href="/login" className="text-[#0D3B66] hover:underline font-light text-center">
               Forgot Password?
             </a>
           </p>
@@ -115,7 +108,7 @@ const LoginPage = () => {
           <div className="mt-16 space-y-4">
             <button
               type="button"
-              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-full shadow-sm hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-md shadow-sm hover:bg-gray-100 transition-colors"
               onClick={() => alert("Google login clicked!")}
             >
               <FcGoogle className="h-6 w-6 mr-2" />
@@ -123,13 +116,11 @@ const LoginPage = () => {
             </button>
             <button
               type="button"
-              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-full shadow-sm hover:bg-gray-100 transition-colors"
+              className="w-full flex items-center justify-center bg-white text-black py-2 border rounded-md shadow-sm hover:bg-gray-100 transition-colors"
               onClick={() => alert("Facebook login clicked!")}
             >
               <FaFacebook className="h-6 w-6 mr-2 text-blue-600" />
-              <span className="text-md leading-none text-gray-700">
-                Continue with Facebook
-              </span>
+              <span className="text-md leading-none text-gray-700">Continue with Facebook</span>
             </button>
           </div>
         </div>

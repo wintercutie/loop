@@ -45,36 +45,26 @@ export default function Navbar() {
           }`}
         >
           <ul className="flex space-x-8">
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              <Link href="/" passHref>
-                Home
-              </Link>
-            </li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              <Link href="/products" passHref>
-                Peripherals
-              </Link>
-            </li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              <Link href="/games" passHref>
-                Games
-              </Link>
-            </li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              <Link href="/collectibles" passHref>
-                Collectibles
-              </Link>
-            </li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              <Link href="/user/purchase/all" passHref>
-                Orders
-              </Link>
-            </li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              <Link href="/discover" passHref>
-                Discover
-              </Link>
-            </li>
+            {[
+              { label: "Home", href: "/" },
+              { label: "Peripherals", href: "/products" },
+              { label: "Games", href: "/games" },
+              { label: "Collectibles", href: "/collectibles" },
+              { label: "Orders", href: "/user/purchase/all" },
+              { label: "Discover", href: "/discover" },
+            ].map((item) => (
+              <li
+                key={item.label}
+                className="cursor-pointer transition-all"
+                style={{ minWidth: "95px", textAlign: "center" }} // Ensures consistent width
+              >
+                <Link href={item.href} passHref>
+                  <span className="block font-light hover:font-semibold text-gray-600 hover:text-[#0D3B66]">
+                    {item.label}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 

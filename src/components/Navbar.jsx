@@ -1,12 +1,15 @@
 "use client"
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  // Toggle the menu on small screens
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen);
+
+  // Close search bar when mouse leaves
+  const handleMouseLeave = () => setIsSearchOpen(false);
 
   return (
     <nav className="bg-white text-black pt-1 fixed top-0 left-0 right-0 shadow-md z-50 w-full">
@@ -22,19 +25,35 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Categories in the center for larger screens */}
-        <div className="flex-grow hidden md:flex justify-center">
+        {/* Categories */}
+        <div
+          className={`flex-grow hidden md:flex justify-center ${
+            isSearchOpen ? "opacity-0" : "opacity-100"
+          }`}
+        >
           <ul className="flex space-x-8">
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">Home</li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">Featured</li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">Peripherals</li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">Games</li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">Collectibles</li>
-            <li className="hover:text-[#0D3B66] cursor-pointer font-light">Orders</li>
+            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
+              Home
+            </li>
+            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
+              Featured
+            </li>
+            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
+              Peripherals
+            </li>
+            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
+              Games
+            </li>
+            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
+              Collectibles
+            </li>
+            <li className="hover:text-[#0D3B66] cursor-pointer font-light">
+              Orders
+            </li>
           </ul>
         </div>
 
-        {/* Icons for larger screens */}
+        {/* Icons */}
         <div className="hidden md:flex space-x-6">
           <Image
             src="/navbar/Search.png"
@@ -42,6 +61,7 @@ export default function Navbar() {
             width={24}
             height={24}
             className="object-contain cursor-pointer"
+            onClick={toggleSearchBar}
           />
           <Image
             src="/navbar/Shopping Cart.png"
@@ -58,35 +78,28 @@ export default function Navbar() {
             className="object-contain cursor-pointer"
           />
         </div>
-
-        {/* Hamburger Menu Icon (visible on mobile) */}
-        <div className="md:hidden flex items-center space-x-6 p-2">
-          <button onClick={toggleMenu}>
-            <Image
-              src="/navbar/Menu.png" // Replace with the hamburger menu icon path
-              alt="Menu"
-              width={24}
-              height={24}
-              className="object-contain cursor-pointer"
-            />
-          </button>
-        </div>
       </div>
 
-      {/* Separator Line */}
+      {/* Blue separator line */}
       <div className="bg-[#0D3B66] h-1 w-full mt-1"></div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-        <ul className="flex flex-col items-center bg-white py-4">
-          <li className="hover:text-[#0D3B66] cursor-pointer font-light py-2">Home</li>
-          <li className="hover:text-[#0D3B66] cursor-pointer font-light py-2">Featured</li>
-          <li className="hover:text-[#0D3B66] cursor-pointer font-light py-2">Products</li>
-          <li className="hover:text-[#0D3B66] cursor-pointer font-light py-2">Games</li>
-          <li className="hover:text-[#0D3B66] cursor-pointer font-light py-2">Collectibles</li>
-          <li className="hover:text-[#0D3B66] cursor-pointer font-light py-2">Orders</li>
-        </ul>
-      </div>
+      {/* Search Bar */}
+      <motion.div
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 bg-white shadow-lg pt-2"
+        initial={{ width: "0%", opacity: 0 }}
+        animate={{
+          width: isSearchOpen ? "50rem" : "0%",
+          opacity: isSearchOpen ? 1 : 0,
+        }}
+        transition={{ duration: 0.5 }}
+        onMouseLeave={handleMouseLeave} // Close the search bar when mouse leaves
+      >
+        <input
+          type="text"
+          className="w-full p-2 border border-gray-300 rounded-md"
+          placeholder="Search..."
+        />
+      </motion.div>
     </nav>
   );
 }

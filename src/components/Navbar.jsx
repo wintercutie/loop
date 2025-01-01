@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -40,7 +40,9 @@ export default function Navbar() {
 
         {/* Categories */}
         <div
-          className={`flex-grow hidden md:flex justify-center ${isSearchOpen ? "opacity-0" : "opacity-100"}`}
+          className={`flex-grow hidden md:flex justify-center ${
+            isSearchOpen ? "opacity-0" : "opacity-100"
+          }`}
         >
           <ul className="flex space-x-8">
             <li className="hover:text-[#0D3B66] cursor-pointer font-light">
@@ -49,19 +51,29 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              Featured
+              <Link href="/products" passHref>
+                Peripherals
+              </Link>
             </li>
             <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              Peripherals
+              <Link href="/games" passHref>
+                Games
+              </Link>
             </li>
             <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              Games
+              <Link href="/collectibles" passHref>
+                Collectibles
+              </Link>
             </li>
             <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              Collectibles
+              <Link href="/user/purchase/all" passHref>
+                Orders
+              </Link>
             </li>
             <li className="hover:text-[#0D3B66] cursor-pointer font-light">
-              Orders
+              <Link href="/discover" passHref>
+                Discover
+              </Link>
             </li>
           </ul>
         </div>

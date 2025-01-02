@@ -1,4 +1,4 @@
-"use client"// error.jsx
+"use client"; // error.jsx
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,8 +7,12 @@ export default function ErrorPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-white mb-4">Oops! Something Went Wrong.</h1>
-        <p className="text-lg text-white mb-8">Don't worry, it's not your fault! We’ll get this fixed right away.</p>
+        <h1 className="text-4xl font-bold text-white mb-4">
+          Oops! Something Went Wrong.
+        </h1>
+        <p className="text-lg text-white mb-8">
+          Don&apos;t worry, it&apos;s not your fault! We&apos;ll get this fixed right away.
+        </p>
 
         <div className="mb-8">
           <Image

@@ -46,17 +46,22 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isExploreOpen, setIsExploreOpen] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);  // Add timeout state
 
   const router = useRouter();
 
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen);
 
   const handleMouseEnterExplore = () => {
+    clearTimeout(timeoutId);  // Clear the timeout if mouse enters the explore area
     setIsExploreOpen(true);
   };
 
   const handleMouseLeaveExplore = () => {
-    setIsExploreOpen(false);
+    const newTimeoutId = setTimeout(() => {
+      setIsExploreOpen(false);
+    }, 300);  // Delay in ms before closing
+    setTimeoutId(newTimeoutId);
   };
 
   const handleKeyDown = (e) => {
@@ -66,6 +71,7 @@ export default function Navbar() {
   };
 
   const handleCloseExplore = () => {
+    clearTimeout(timeoutId);  // Clear the timeout on close
     setIsExploreOpen(false);
   };
 
@@ -88,13 +94,14 @@ export default function Navbar() {
           className={`flex-grow hidden md:flex justify-center ${isSearchOpen ? "opacity-0" : "opacity-100"}`}
         >
           <ul className="flex space-x-12">
-            <li className="relative  hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
+            <li className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
               <Link href="/" className="block">Home</Link>
             </li>
             <li
               className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
               style={{ minWidth: "max-content" }}
               onMouseEnter={handleMouseEnterExplore}
+              onMouseLeave={handleMouseLeaveExplore}  // Add the onMouseLeave event to the Products menu item
             >
               Products
             </li>
@@ -159,6 +166,7 @@ export default function Navbar() {
       {isExploreOpen && (
         <div
           className="absolute top-full left-0 w-full bg-gray-100 shadow-lg z-40 shadow-lg pt-2 px-4 pb-4"
+          onMouseEnter={handleMouseEnterExplore}  // Add the onMouseEnter event to the dropdown area
           onMouseLeave={handleMouseLeaveExplore}
         >
           <button

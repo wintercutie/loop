@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -47,6 +47,14 @@ export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [isExploreOpen, setIsExploreOpen] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null); // Add timeout state
+  const [currentImage, setCurrentImage] = useState(0); // State to control the current image
+
+  const images = [
+    "/homepage/brand1.webp",
+    "/homepage/brand2.webp",
+    "/homepage/brand4.png",
+    "/homepage/brand5.webp",
+  ];
 
   const router = useRouter();
 
@@ -113,6 +121,15 @@ export default function Navbar() {
     },
   };
 
+  // Change image every 2 seconds (slower change)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 5000); // Change image every 2 seconds (slower change)
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
+
   return (
     <nav className="bg-white text-black pt-1 fixed top-0 left-0 right-0 shadow-md z-50 w-full">
       <div className="container mx-auto flex items-center justify-between">
@@ -129,11 +146,18 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`flex-grow hidden md:flex justify-center ${isSearchOpen ? "opacity-0" : "opacity-100"}`}
+          className={`flex-grow hidden md:flex justify-center ${
+            isSearchOpen ? "opacity-0" : "opacity-100"
+          }`}
         >
           <ul className="flex space-x-12">
-            <li className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
-              <Link href="/" className="block">Home</Link>
+            <li
+              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              style={{ minWidth: "max-content" }}
+            >
+              <Link href="/" className="block">
+                Home
+              </Link>
             </li>
             <li
               className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
@@ -143,11 +167,21 @@ export default function Navbar() {
             >
               Products
             </li>
-            <li className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
-              <Link href="/orders" className="block">Orders</Link>
+            <li
+              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              style={{ minWidth: "max-content" }}
+            >
+              <Link href="/orders" className="block">
+                Orders
+              </Link>
             </li>
-            <li className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
-              <Link href="/discover" className="block">Discover</Link>
+            <li
+              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              style={{ minWidth: "max-content" }}
+            >
+              <Link href="/discover" className="block">
+                Discover
+              </Link>
             </li>
           </ul>
         </div>
@@ -201,9 +235,10 @@ export default function Navbar() {
       </motion.div>
 
       {/* Explore Dropdown */}
+      {/* Explore Dropdown */}
       {isExploreOpen && (
         <motion.div
-          className="absolute top-full left-0 w-full bg-gray-100 shadow-lg z-40 shadow-lg pt-2 px-4 pb-4"
+          className="absolute top-full left-0 w-full bg-gray-100 shadow-lg z-40 pt-2 px-4 pb-4"
           onMouseEnter={handleMouseEnterExplore}
           onMouseLeave={handleMouseLeaveExplore}
           initial="hidden"
@@ -217,31 +252,60 @@ export default function Navbar() {
           >
             &times;
           </button>
-          <div className="container mx-auto grid grid-cols-3 gap-8 p-4 ">
-            {exploreCategories.map((category) => (
-              <div key={category.label}>
-                <motion.h3
-                  className="font-semibold text-lg text-[#0D3B66] mb-2"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, transition: { duration: 0.3 } }}
-                >
-                  {category.label}
-                </motion.h3>
-                <motion.ul variants={containerVariants}>
-                  {category.items.map((item) => (
-                    <motion.li
-                      key={item.label}
-                      variants={listItemVariants}
-                      className=""
-                    >
-                      <Link href={item.href} className="hover:text-[#0D3B66] cursor-pointer text-sm">
-                        {item.label}
-                      </Link>
-                    </motion.li>
-                  ))}
-                </motion.ul>
-              </div>
-            ))}
+          <div className="flex mt-4 mx-auto justify-center gap-28">
+            {/* Categories Container */}
+            <div className="flex grid grid-cols-3 py-2 gap-28">
+              {" "}
+              {/* Compact the grid by reducing padding and adjusting*/}
+              {exploreCategories.map((category) => (
+                <div key={category.label}>
+                  <motion.h3
+                    className="font-semibold text-lg text-[#0D3B66] mb-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 1 } }}
+                  >
+                    {category.label}
+                  </motion.h3>
+                  <motion.ul variants={containerVariants}>
+                    {category.items.map((item) => (
+                      <motion.li
+                        key={item.label}
+                        variants={listItemVariants}
+                        className=""
+                      >
+                        <Link
+                          href={item.href}
+                          className="hover:text-[#0D3B66] cursor-pointer text-sm"
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                </div>
+              ))}
+            </div>
+            {/* Vertical Separator */}
+            <div className="border-l border-gray-300 h-auto mx-4"></div>{" "}
+            {/* Vertical line */}
+            {/* Image Container (Right side of categories) */}
+            <div className=" flex justify-center items-start">
+              <motion.div
+                key={images[currentImage]}
+                className="w-[300px] h-[200px] flex justify-center items-center" // Updated container size
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 2 } }}
+                exit={{ opacity: 0 }}
+              >
+                <Image
+                  src={images[currentImage]}
+                  alt={`Brand ${currentImage}`}
+                  width={300} // Set fixed width
+                  height={150} // Set fixed height
+                  className="object-fill" // Ensures image covers the container appropriately
+                />
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       )}

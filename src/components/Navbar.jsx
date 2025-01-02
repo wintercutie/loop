@@ -65,6 +65,10 @@ export default function Navbar() {
     }
   };
 
+  const handleCloseExplore = () => {
+    setIsExploreOpen(false);
+  };
+
   return (
     <nav className="bg-white text-black pt-1 fixed top-0 left-0 right-0 shadow-md z-50 w-full">
       <div className="container mx-auto flex items-center justify-between">
@@ -81,41 +85,24 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`flex-grow hidden md:flex justify-center ${
-            isSearchOpen ? "opacity-0" : "opacity-100"
-          }`}
+          className={`flex-grow hidden md:flex justify-center ${isSearchOpen ? "opacity-0" : "opacity-100"}`}
         >
           <ul className="flex space-x-12">
-            <li
-              className="relative  hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
-              style={{ minWidth: "max-content" }}
-            >
-              <Link href="/" className="block">
-                Home
-              </Link>
+            <li className="relative  hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
+              <Link href="/" className="block">Home</Link>
             </li>
             <li
-              className="relative  hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
               style={{ minWidth: "max-content" }}
               onMouseEnter={handleMouseEnterExplore}
             >
               Products
             </li>
-            <li
-              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
-              style={{ minWidth: "max-content" }}
-            >
-              <Link href="/orders" className="block">
-                Orders
-              </Link>
+            <li className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
+              <Link href="/orders" className="block">Orders</Link>
             </li>
-            <li
-              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
-              style={{ minWidth: "max-content" }}
-            >
-              <Link href="/discover" className="block">
-                Discover
-              </Link>
+            <li className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer" style={{ minWidth: "max-content" }}>
+              <Link href="/discover" className="block">Discover</Link>
             </li>
           </ul>
         </div>
@@ -171,22 +158,23 @@ export default function Navbar() {
       {/* Explore Dropdown */}
       {isExploreOpen && (
         <div
-          className="absolute top-full left-0 w-full bg-gray-100 shadow-lg z-40"
+          className="absolute top-full left-0 w-full bg-gray-100 shadow-lg z-40 shadow-lg pt-2 px-4 pb-4"
           onMouseLeave={handleMouseLeaveExplore}
         >
-          <div className="container mx-auto grid grid-cols-3 gap-8 p-4">
+          <button
+            className="absolute top-2 right-2 text-xl font-bold text-[#0D3B66] cursor-pointer"
+            onClick={handleCloseExplore}
+          >
+            &times;
+          </button>
+          <div className="container mx-auto grid grid-cols-3 gap-8 p-4 ">
             {exploreCategories.map((category) => (
               <div key={category.label}>
-                <h3 className="font-semibold text-lg text-[#0D3B66] mb-2">
-                  {category.label}
-                </h3>
+                <h3 className="font-semibold text-lg text-[#0D3B66] mb-2">{category.label}</h3>
                 <ul>
                   {category.items.map((item) => (
-                    <li key={item.label} className="mb-1">
-                      <Link
-                        href={item.href}
-                        className="hover:text-[#0D3B66] cursor-pointer text-sm"
-                      >
+                    <li key={item.label} className="">
+                      <Link href={item.href} className="hover:text-[#0D3B66] cursor-pointer text-sm">
                         {item.label}
                       </Link>
                     </li>

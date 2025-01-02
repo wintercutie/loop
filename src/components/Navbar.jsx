@@ -46,21 +46,21 @@ export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [isExploreOpen, setIsExploreOpen] = useState(false);
-  const [timeoutId, setTimeoutId] = useState(null);  // Add timeout state
+  const [timeoutId, setTimeoutId] = useState(null); // Add timeout state
 
   const router = useRouter();
 
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen);
 
   const handleMouseEnterExplore = () => {
-    clearTimeout(timeoutId);  // Clear the timeout if mouse enters the explore area
+    clearTimeout(timeoutId); // Clear the timeout if mouse enters the explore area
     setIsExploreOpen(true);
   };
 
   const handleMouseLeaveExplore = () => {
     const newTimeoutId = setTimeout(() => {
       setIsExploreOpen(false);
-    }, 300);  // Delay in ms before closing
+    }, 400); // Delay in ms before closing
     setTimeoutId(newTimeoutId);
   };
 
@@ -71,8 +71,46 @@ export default function Navbar() {
   };
 
   const handleCloseExplore = () => {
-    clearTimeout(timeoutId);  // Clear the timeout on close
+    clearTimeout(timeoutId); // Clear the timeout on close
     setIsExploreOpen(false);
+  };
+
+  // Animation Variants
+  const listItemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      y: 10,
+      transition: {
+        duration: 0.3,
+        ease: "easeIn",
+      },
+    },
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // Stagger the child elements
+        duration: 0.5,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.3,
+      },
+    },
   };
 
   return (
@@ -101,7 +139,7 @@ export default function Navbar() {
               className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
               style={{ minWidth: "max-content" }}
               onMouseEnter={handleMouseEnterExplore}
-              onMouseLeave={handleMouseLeaveExplore}  // Add the onMouseLeave event to the Products menu item
+              onMouseLeave={handleMouseLeaveExplore}
             >
               Products
             </li>
@@ -164,10 +202,14 @@ export default function Navbar() {
 
       {/* Explore Dropdown */}
       {isExploreOpen && (
-        <div
+        <motion.div
           className="absolute top-full left-0 w-full bg-gray-100 shadow-lg z-40 shadow-lg pt-2 px-4 pb-4"
-          onMouseEnter={handleMouseEnterExplore}  // Add the onMouseEnter event to the dropdown area
+          onMouseEnter={handleMouseEnterExplore}
           onMouseLeave={handleMouseLeaveExplore}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={containerVariants}
         >
           <button
             className="absolute top-2 right-2 text-xl font-bold text-[#0D3B66] cursor-pointer"
@@ -178,20 +220,30 @@ export default function Navbar() {
           <div className="container mx-auto grid grid-cols-3 gap-8 p-4 ">
             {exploreCategories.map((category) => (
               <div key={category.label}>
-                <h3 className="font-semibold text-lg text-[#0D3B66] mb-2">{category.label}</h3>
-                <ul>
+                <motion.h3
+                  className="font-semibold text-lg text-[#0D3B66] mb-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { duration: 0.3 } }}
+                >
+                  {category.label}
+                </motion.h3>
+                <motion.ul variants={containerVariants}>
                   {category.items.map((item) => (
-                    <li key={item.label} className="">
+                    <motion.li
+                      key={item.label}
+                      variants={listItemVariants}
+                      className=""
+                    >
                       <Link href={item.href} className="hover:text-[#0D3B66] cursor-pointer text-sm">
                         {item.label}
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );

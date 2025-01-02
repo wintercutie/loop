@@ -51,7 +51,13 @@ export default function Navbar() {
 
   const toggleSearchBar = () => setIsSearchOpen(!isSearchOpen);
 
-  const handleMouseLeaveExplore = () => setIsExploreOpen(false);
+  const handleMouseEnterExplore = () => {
+    setIsExploreOpen(true);
+  };
+
+  const handleMouseLeaveExplore = () => {
+    setIsExploreOpen(false);
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && searchTerm) {
@@ -79,24 +85,37 @@ export default function Navbar() {
             isSearchOpen ? "opacity-0" : "opacity-100"
           }`}
         >
-          <ul className="flex space-x-8">
-            <li className="hover:text-[#0D3B66] hover:font-semibold cursor-pointer font-light">
-              <Link href="/" passHref>
+          <ul className="flex space-x-12">
+            <li
+              className="relative  hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              style={{ minWidth: "max-content" }}
+            >
+              <Link href="/" className="block">
                 Home
               </Link>
             </li>
             <li
-              className="hover:text-[#0D3B66] hover:font-semibold cursor-pointer font-light relative"
-              onMouseEnter={() => setIsExploreOpen(true)}
-              onMouseLeave={handleMouseLeaveExplore}
+              className="relative  hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              style={{ minWidth: "max-content" }}
+              onMouseEnter={handleMouseEnterExplore}
             >
-              Explore
+              Products
             </li>
-            <li className="hover:text-[#0D3B66] hover:font-semibold cursor-pointer font-light">
-              Orders
+            <li
+              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              style={{ minWidth: "max-content" }}
+            >
+              <Link href="/orders" className="block">
+                Orders
+              </Link>
             </li>
-            <li className="hover:text-[#0D3B66] hover:font-semibold cursor-pointer font-light">
-              Discover
+            <li
+              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
+              style={{ minWidth: "max-content" }}
+            >
+              <Link href="/discover" className="block">
+                Discover
+              </Link>
             </li>
           </ul>
         </div>
@@ -166,7 +185,7 @@ export default function Navbar() {
                     <li key={item.label} className="mb-1">
                       <Link
                         href={item.href}
-                        className="hover:text-[#0D3B66] cursor-pointer"
+                        className="hover:text-[#0D3B66] cursor-pointer text-sm"
                       >
                         {item.label}
                       </Link>

@@ -1,31 +1,24 @@
-"use client"; // not-found.jsx
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+
+import React from "react";
+import Link from "next/link";
 
 export default function ErrorPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white">
       <div className="text-center text-gray-800 max-w-lg mx-auto">
-        <h1 className="text-6xl font-serif font-semibold mb-6">404</h1>
-        <h2 className="text-2xl font-medium mb-6">Sorry, this page isn’t available</h2>
+        <h1 className="text-8xl font-semibold mb-6 text-[#0D3B66]">Error Page</h1>
+        <h2 className="text-2xl font-medium mb-6">Sorry, something went wrong</h2>
         <p className="text-lg mb-8">
-          ERROR!
-          Let’s get you back to where you belong.
+          The page you are looking for might have been moved, deleted, or does not exist. 
+          Let’s get you back to safety.
         </p>
 
-        <div className="mb-8">
-          <Image
-            src="/homepage/moodeng pic.jfif" // Use a clean, elegant 404 illustration
-            alt="Page Not Found"
-            width={350}
-            height={350}
-            className="rounded-lg"
-          />
-        </div>
-
         <Link href="/" passHref>
-          <button className="px-8 py-3 bg-gray-800 text-white text-xl font-medium rounded-lg hover:bg-gray-700 transition ease-in-out">
+          <button
+            type="button"
+            className="px-8 py-3 bg-[#0D3B66] text-white text-xl font-medium rounded-lg hover:bg-[#125A99] transition ease-in-out"
+          >
             Go Back Home
           </button>
         </Link>

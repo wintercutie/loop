@@ -1,11 +1,11 @@
 import React from "react";
-import ProductCard from "./CardWithDetails";
+import PeripheralCard from "./peripheralCardWithDetails";
 
 const PeripheralGrid = ({ products }) => {
   return (
-    <div className="grid grid-cols-4 gap-8">
+    <div className="grid grid-cols-4 gap-6">
       {products.map((product, index) => (
-        <ProductCard
+        <PeripheralCard
           key={index}
           name={product.name}
           price={product.price}

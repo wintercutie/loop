@@ -1,4 +1,4 @@
-export const products = [
+export const peripheralProducts = [
     {
       name: "Mechanical Gaming Keyboard",
       price: 50,

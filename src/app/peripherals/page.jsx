@@ -1,4 +1,6 @@
 import React from 'react'
+import { peripheralProducts } from "@/utils/peripherals/constantsPeripherals";
+import PeripheralGrid from "@/components/peripherals/peripheralGrid";
 
 export default function Peripherals() {
   return (
@@ -35,20 +37,8 @@ export default function Peripherals() {
           </aside>
 
           {/* Peripherals Grid */}
-          <section className="col-span-3 grid grid-cols-4 gap-6">
-            {Array(9).fill().map((_, idx) => (
-              <div key={idx} className="bg-white p-4 shadow-md rounded-lg">
-                <img
-                  src={`https://via.placeholder.com/150?text=Item+${idx + 1}`}
-                  alt={`Peripheral ${idx + 1}`}
-                  className="mb-4 rounded"
-                />
-                <h3 className="text-sm font-medium mb-2">
-                  Product Name {idx + 1}
-                </h3>
-                <p className="text-lg font-semibold">₱11,795.00</p>
-              </div>
-            ))}
+          <section className="col-span-3">
+            <PeripheralGrid products = {peripheralProducts} />
           </section>
         </div>
       </main>

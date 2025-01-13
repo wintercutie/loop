@@ -10,6 +10,7 @@ const PeripheralGrid = ({ products }) => {
           name={product.name}
           price={product.price}
           image={product.image}
+          slug={product.slug}
         />
       ))}
     </div>

@@ -9,7 +9,7 @@ const exploreCategories = [
   {
     label: "Peripherals",
     items: [
-      { label: "Mice", href: "/peripherals/mice" },
+      { label: "Mice", href: "/peripherals" },
       { label: "Keyboards", href: "/peripherals/keyboards" },
       { label: "Headsets", href: "/peripherals/headsets" },
       { label: "Microphones", href: "/peripherals/microphones" },
@@ -33,7 +33,7 @@ const exploreCategories = [
   {
     label: "Collectibles",
     items: [
-      { label: "Action Figures", href: "/collectibles/action-figures" },
+      { label: "Action Figures", href: "/collectibles" },
       { label: "Amiibo", href: "/collectibles/amiibo" },
       { label: "Badges", href: "/collectibles/badges" },
       { label: "Cards", href: "/collectibles/cards" },

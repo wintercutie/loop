@@ -33,16 +33,16 @@ const SignupPage = () => {
       </div>
 
       {/* Login Form Section */}
-      <div className="flex-1 w-1/4 flex justify-center bg-white shadow-lg mt-20">
+      <div className="flex-1 w-1/4 flex justify-center bg-white shadow-lg">
         <div className="w-full max-w-md p-8">
-          <h2 className="text-4xl font-semibold text-left mt-6 mb-3">
+          <h2 className="text-3xl font-semibold text-left mb-3">
             <span>Create an</span>
             <br />
             <span>account</span>
           </h2>
 
           {/* 3rd source Button */}
-          <div className="flex space-x-4 justify-start mb-12">
+          <div className="flex space-x-3 justify-start mb-12">
             {/* Google Button */}
             <IconButton Icon={FcGoogle} color="#000" />
 
@@ -50,7 +50,7 @@ const SignupPage = () => {
             <IconButton Icon={FaFacebook} color="#4267B2" />
           </div>
 
-          <div className="mb-12">
+          <div className="mb-8">
             <h2>
               <span className="font-semibold text-lg">Sign up with email</span>
               <br />
@@ -69,7 +69,7 @@ const SignupPage = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-xs font-medium text-gray-700"
               >
                 Email Address
               </label>
@@ -86,7 +86,7 @@ const SignupPage = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-xs font-medium text-gray-700"
               >
                 Password
               </label>
@@ -103,7 +103,7 @@ const SignupPage = () => {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-xs font-medium text-gray-700"
               >
                 Confirm Password
               </label>

@@ -1,12 +1,12 @@
-import { Montserrat } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-// Google Font: https://fonts.google.com/specimen/Montserrat
-// Importing of Font Montserrat
+// Google Font: https://fonts.google.com/specimen/Poppins
+// Importing of Font Poppins
 
-const montserrat_init = Montserrat({
+const poppins_init = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-montserrat",
+  variable: "--font-poppins",
 });
 
-export const montserrat = montserrat_init.variable;
+export const poppins = poppins_init.variable;

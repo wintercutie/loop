@@ -1,5 +1,7 @@
 import "./globals.css";
-import { montserrat } from "../utils/fonts.jsx";
+import { poppins } from "../utils/fonts.jsx";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "DataBlitz",
@@ -9,7 +11,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${montserrat}`}>{children}</body>
+      <body className={`${poppins} pt-[60px]`}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const scrollbarHide = require('tailwind-scrollbar-hide');
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,9 +14,9 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        montserrat: ["var(--font-montserrat)"],
+        montserrat: ["var(--font-poppins)"],
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar-hide')],
 };

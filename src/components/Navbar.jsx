@@ -21,7 +21,7 @@ const exploreCategories = [
   {
     label: "Games",
     items: [
-      { label: "Action", href: "/games/action" },
+      { label: "Action", href: "/games" },
       { label: "Adventure", href: "/games/adventure" },
       { label: "Casual", href: "/games/casual" },
       { label: "Fighting", href: "/games/fighting" },

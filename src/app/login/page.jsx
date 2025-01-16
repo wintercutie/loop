@@ -5,24 +5,36 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc"; // Google icon
 import { FaFacebook } from "react-icons/fa"; // Facebook icon
+import axios from "axios";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); // For showing error messages
   const router = useRouter();
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent form from refreshing
-    setError(null);
+    e.preventDefault(); // Prevent form refresh
+    setError(null); // Clear previous errors
 
-    // Simulate API login call
-    const isLoginSuccessful =
-      email === "user@example.com" && password === "password123";
-    if (isLoginSuccessful) {
-      router.push("/"); // Redirect to a dashboard page on successful login
-    } else {
-      setError("Invalid email or password");
+    try {
+      const response = await axios.post("/api/login", { email, password });
+
+      if (response.status === 201) {
+        router.push("/"); // Redirect on successful login
+      }
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 400) {
+          setError("Invalid email or password."); // Wrong credentials
+        } else if (err.response.status === 404) {
+          setError(" The password you’ve entered is incorrect."); // Account not found
+        } else {
+          setError("An error occurred. Please try again later."); // General error
+        }
+      } else {
+        setError("An error occurred. Please try again later."); // General error
+      }
     }
   };
 
@@ -43,23 +55,17 @@ const LoginPage = () => {
       {/* Login Form Section */}
       <div className="flex-1 w-1/4 flex justify-center bg-white shadow-lg">
         <div className="w-full max-w-md p-8">
-          <h2 className="text-3xl font-semibold text-left mt-6 mb-3">
-            Sign in
-          </h2>
+          <h2 className="text-3xl font-semibold text-left mt-6 mb-3">Log In</h2>
 
           {/* New User? Create An Account */}
           <div className="flex mb-8 gap-2 items-center whitespace-nowrap">
-            <h2 className="font-light text-sm">Don&apos;t have an account?</h2>
+            <h2 className="font-light text-xs">Don&apos;t have an account?</h2>
             <Link href="/signup">
-              <h2 className="text-[#0D3B66] text-sm font-medium cursor-pointer hover:underline">
+              <h2 className="text-[#0D3B66] text-xs font-medium cursor-pointer hover:underline">
                 Create an Account
               </h2>
             </Link>
           </div>
-
-          {error && (
-            <div className="text-red-500 text-center mb-4">{error}</div>
-          )}
 
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-4">
@@ -106,6 +112,13 @@ const LoginPage = () => {
                 Login
               </button>
             </div>
+
+            {/* Error Message */}
+            {error && (
+              <div className="text-red-500 text-center mb-4 font-light text-xs">
+                {error}
+              </div>
+            )}
           </form>
 
           <p className="text-center text-xs text-gray-600 mt-4 ml-3">

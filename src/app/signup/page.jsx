@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc"; // Google icon
 import { FaFacebook } from "react-icons/fa"; // Facebook icon
 import IconButton from "@/components/signup/IconButton";
+import axios from "axios";
 
 const SignupPage = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,9 @@ const SignupPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const response = await axios.post('/api/register', {email, password});
+    console.log(response)
+
     router.push("/login"); // Redirect to the login page on form submission
   };
 
@@ -42,7 +46,7 @@ const SignupPage = () => {
           </h2>
 
           {/* 3rd source Button */}
-          <div className="flex space-x-3 justify-start mb-12">
+          <div className="flex space-x-3 justify-start mb-8">
             {/* Google Button */}
             <IconButton Icon={FcGoogle} color="#000" />
 
@@ -50,11 +54,11 @@ const SignupPage = () => {
             <IconButton Icon={FaFacebook} color="#4267B2" />
           </div>
 
-          <div className="mb-8">
+          <div className="mb-6">
             <h2>
               <span className="font-semibold text-lg">Sign up with email</span>
               <br />
-              <div className="flex gap-2 mt-2 text-sm">
+              <div className="flex gap-2 text-sm">
                 <span>Already have an account?</span>
                 <Link href="/login">
                   <h2 className="text-[#0D3B66] font-medium cursor-pointer hover:underline">

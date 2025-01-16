@@ -73,8 +73,8 @@ export default function Navbar() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && searchTerm) {
-      router.push(`/search/${searchTerm}`);
+    if (e.key === "Enter" && searchTerm.trim()) {
+      router.push(`/search/${encodeURIComponent(searchTerm.trim())}`);
     }
   };
 

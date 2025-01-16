@@ -78,7 +78,7 @@ const SignupPage = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-xs"
                 placeholder="user@example.com"
                 required
               />
@@ -95,7 +95,7 @@ const SignupPage = () => {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 block w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-xs"
                 placeholder="********"
                 required
               />
@@ -112,7 +112,7 @@ const SignupPage = () => {
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className={`mt-1 block w-full px-4 py-2 border rounded-md ${
+                className={`mt-1 block w-full px-4 py-2 border rounded-md text-xs ${
                   confirmPassword && confirmPassword !== password
                     ? "border-red-500 focus:ring-red-500 focus:border-red-500"
                     : "focus:ring-blue-500 focus:border-blue-500"
@@ -132,7 +132,7 @@ const SignupPage = () => {
 
             <button
               type="submit"
-              className="w-full mt-12 bg-[#0D3B66] text-white py-2 rounded-lg hover:bg-[#145EA8] transition-colors"
+              className="w-full mt-12 bg-[#0D3B66] text-sm text-white py-2 rounded-lg hover:bg-[#145EA8] transition-colors"
             >
               Sign Up
             </button>

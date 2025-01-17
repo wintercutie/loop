@@ -25,12 +25,12 @@ const PaymentComponent = ({ productPrice }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm mx-auto">
-      <div className="flex justify-between mb-5">
+    <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl mx-auto">
+      <div className="flex justify-between mb-5 overflow-x-auto">
         {tabs.map((tab) => (
           <button
             key={tab}
-            className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 
+            className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap 
               ${activeTab === tab ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
             onClick={() => handleTabClick(tab)}
           >

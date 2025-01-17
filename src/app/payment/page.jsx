@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import DeliveryAddress from "@/components/payment/DeliveryAddress";
+import AssuranceSection from "@/components/homepage/AssuranceSection";
+import PaymentComponent from "@/components/payment/PaymentMethod";
 
 export default function Payment() {
   return (
@@ -27,6 +29,18 @@ export default function Payment() {
           contactNumber="+63 999 888 7654"
           address="Ionia Hueco Mundo Street, Barangay 63, New Sampaloc City, Metro Manila, Metro Manila, 1400"
         />
+      </div>
+
+      {/* Product Ordered */}
+
+      {/* Payment Method */}
+      <div>
+        <PaymentComponent productPrice={11795} />
+      </div>
+
+      {/* Assurance Section */}
+      <div className="mt-16">
+        <AssuranceSection></AssuranceSection>
       </div>
     </div>
   );

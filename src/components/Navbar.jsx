@@ -138,8 +138,8 @@ export default function Navbar() {
             <Image
               src="/navbar/Logo.png"
               alt="Logo"
-              width={150}
-              height={150}
+              width={100}
+              height={100}
               className="object-contain cursor-pointer"
             />
           </Link>
@@ -155,12 +155,12 @@ export default function Navbar() {
               className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
               style={{ minWidth: "max-content" }}
             >
-              <Link href="/" className="block text-sm">
+              <Link href="/" className="block text-xs">
                 Home
               </Link>
             </li>
             <li
-              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer text-sm"
+              className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer text-xs"
               style={{ minWidth: "max-content" }}
               onMouseEnter={handleMouseEnterExplore}
               onMouseLeave={handleMouseLeaveExplore}
@@ -171,7 +171,7 @@ export default function Navbar() {
               className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
               style={{ minWidth: "max-content" }}
             >
-              <Link href="/user/purchase/all" className="block text-sm">
+              <Link href="/user/purchase/all" className="block text-xs">
                 Orders
               </Link>
             </li>
@@ -179,7 +179,7 @@ export default function Navbar() {
               className="relative hover:text-bg[#0D3B66] hover:font-semibold transition-all duration-200 ease-in-out cursor-pointer"
               style={{ minWidth: "max-content" }}
             >
-              <Link href="/discover" className="block text-sm">
+              <Link href="/discover" className="block text-xs">
                 Discover
               </Link>
             </li>
@@ -190,23 +190,23 @@ export default function Navbar() {
           <Image
             src="/navbar/Search.png"
             alt="Search"
-            width={24}
-            height={24}
+            width={18}
+            height={18}
             className="object-contain cursor-pointer"
             onClick={toggleSearchBar}
           />
           <Image
             src="/navbar/Shopping Cart.png"
             alt="Shopping Cart"
-            width={24}
-            height={24}
+            width={18}
+            height={18}
             className="object-contain cursor-pointer"
           />
           <Image
             src="/navbar/User.png"
             alt="User"
-            width={24}
-            height={24}
+            width={18}
+            height={18}
             className="object-contain cursor-pointer"
           />
         </div>

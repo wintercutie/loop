@@ -1,37 +1,143 @@
-"use client"
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 
 const PaymentComponent = ({ productPrice }) => {
   const shippingFee = 40; // Fixed shipping fee
   const totalPrice = productPrice + shippingFee;
 
-  const [activeTab, setActiveTab] = useState('COD');
-  const [selectedWallet, setSelectedWallet] = useState('');
+  const [activeTab, setActiveTab] = useState("COD");
+  const [selectedWallet, setSelectedWallet] = useState("");
 
-  const tabs = ['COD', 'Credit/Debit Card', 'Payment Center/E-Wallet', 'Online Banking', 'Linked Bank Account'];
+  const tabs = [
+    "COD",
+    "Credit/Debit Card",
+    "Payment Center/E-Wallet",
+    "Online Banking",
+    "Linked Bank Account",
+  ];
 
   const wallets = [
-    { id: 'GCash', label: 'GCash' },
-    { id: 'Maya', label: 'Maya' },
+    { id: "GCash", label: "GCash", logo: "/payment/Gcashlogo.png" },
+    { id: "Maya", label: "Maya", logo: "/payment/Mayalogo.png" },
   ];
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    setSelectedWallet('');
+    setSelectedWallet("");
   };
 
   const handleWalletSelection = (wallet) => {
     setSelectedWallet(wallet);
   };
 
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "COD":
+        return (
+          <p className="text-sm">You will pay the courier upon delivery.</p>
+        );
+      case "Credit/Debit Card":
+        return (
+          <div className="space-y-4">
+            <input
+              type="text"
+              placeholder="Card Number"
+              className="w-full p-2 border border-gray-300 rounded-md"
+            />
+            <div className="flex space-x-4">
+              <input
+                type="text"
+                placeholder="Expiration Date (MM/YY)"
+                className="w-1/2 p-2 border border-gray-300 rounded-md"
+              />
+              <input
+                type="text"
+                placeholder="CVV"
+                className="w-1/2 p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Cardholder Name"
+              className="w-full p-2 border border-gray-300 rounded-md"
+            />
+          </div>
+        );
+      case "Payment Center/E-Wallet":
+        return (
+          <div className="space-y-4">
+            {wallets.map((wallet) => (
+              <label
+                key={wallet.id}
+                className="flex items-center space-x-4 text-sm border border-gray-300 rounded-md p-2 hover:shadow-md cursor-pointer"
+              >
+                <input
+                  type="radio"
+                  name="wallet"
+                  value={wallet.id}
+                  checked={selectedWallet === wallet.id}
+                  onChange={() => handleWalletSelection(wallet.id)}
+                  className="form-radio text-blue-500"
+                />
+                <img
+                  src={wallet.logo}
+                  alt={`${wallet.label} Logo`}
+                  className="h-8 w-8"
+                />
+                <span className="font-medium">{wallet.label}</span>
+              </label>
+            ))}
+            {selectedWallet && (
+              <p className="text-sm mt-2">
+                Selected Wallet:{" "}
+                <span className="font-semibold">{selectedWallet}</span>
+              </p>
+            )}
+          </div>
+        );
+      case "Online Banking":
+        return (
+          <div className="space-y-4">
+            <select className="w-full p-2 border border-gray-300 rounded-md">
+              <option value="">Select Your Bank</option>
+              <option value="BPI">BPI</option>
+              <option value="BDO">BDO</option>
+              <option value="Metrobank">Metrobank</option>
+              <option value="UnionBank">UnionBank</option>
+            </select>
+            <p className="text-sm">
+              Once you confirm, you'll be redirected to your bank's website to
+              complete the payment.
+            </p>
+          </div>
+        );
+      case "Linked Bank Account":
+        return (
+          <p className="text-xs">
+            No linked bank accounts found. Please link a bank account in your
+            profile settings to use this option.
+          </p>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl mx-auto">
-      <div className="flex justify-between mb-5 overflow-x-auto">
+    <div className="border border-gray-300 bg-white p-8 rounded-lg shadow-md w-full max-w-7xl mx-auto">
+      <div className="tracking-widest font-medium text-sm mb-2 text-gray-500">
+        Payment Option
+      </div>
+      <div className="flex justify-center mb-5 space-x-2">
         {tabs.map((tab) => (
           <button
             key={tab}
-            className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-300 whitespace-nowrap 
-              ${activeTab === tab ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+            className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-300 whitespace-nowrap 
+              ${
+                activeTab === tab
+                  ? "bg-[#F4D35E] text-black"
+                  : "bg-white text-gray-500 border border-[#F4D35E] hover:bg-gray-100"
+              }`}
             onClick={() => handleTabClick(tab)}
           >
             {tab}
@@ -39,33 +145,47 @@ const PaymentComponent = ({ productPrice }) => {
         ))}
       </div>
 
-      {activeTab === 'Payment Center/E-Wallet' && (
-        <div className="flex flex-col space-y-4">
-          {wallets.map((wallet) => (
-            <label key={wallet.id} className="flex items-center space-x-2 text-sm">
-              <input
-                type="radio"
-                name="wallet"
-                value={wallet.id}
-                checked={selectedWallet === wallet.id}
-                onChange={() => handleWalletSelection(wallet.id)}
-                className="form-radio text-blue-500"
-              />
-              <span>{wallet.label}</span>
-            </label>
-          ))}
-        </div>
-      )}
+      <div className="mt-4">{renderTabContent()}</div>
+      <div className="w-full h-[2px] bg-[#F4D35E] my-6"></div>
 
-      <div className="mt-6">
-        <p className="text-sm">Product Subtotal: <span className="font-semibold">₱{productPrice.toFixed(2)}</span></p>
-        <p className="text-sm">Shipping Subtotal: <span className="font-semibold">₱{shippingFee.toFixed(2)}</span></p>
-        <p className="mt-4 text-lg font-semibold text-green-500">Total Payment: <span>₱{totalPrice.toFixed(2)}</span></p>
+      {/* Payment Summary with Horizontal Containers */}
+      <div className="mt-6 flex justify-between items-start">
+        {/* Left Container (Empty or Placeholder) */}
+        <div className="w-1/3"></div>
+
+        {/* Middle Container (Empty for Spacing or Future Use) */}
+        <div className="w-1/3"></div>
+
+        {/* Right Container (Payment Details) */}
+        <div className="w-1/3 space-y-4 text-right">
+          <div className="flex justify-between items-center">
+            <div className="text-sm">Product Subtotal:</div>
+            <div className="text-sm font-semibold">
+              ₱{productPrice.toFixed(2)}
+            </div>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="text-sm">Shipping Subtotal:</div>
+            <div className="text-sm font-semibold">
+              ₱{shippingFee.toFixed(2)}
+            </div>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="text-lg font-semibold text-green-500">
+              Total Payment:
+            </div>
+            <div className="text-lg font-semibold text-green-500">
+              ₱{totalPrice.toFixed(2)}
+            </div>
+          </div>
+        </div>
       </div>
 
-      <button className="w-full mt-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">
-        Place Order
-      </button>
+      <div className="mt-6 flex justify-end">
+        <button className="py-3 px-8 bg-[#F4D35E] text-black font-semibold rounded-lg shadow-md hover:bg-[#F1C232] transition duration-300 w-1/4">
+          Place Order
+        </button>
+      </div>
     </div>
   );
 };

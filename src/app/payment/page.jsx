@@ -3,6 +3,7 @@ import Link from "next/link";
 import DeliveryAddress from "@/components/payment/DeliveryAddress";
 import AssuranceSection from "@/components/homepage/AssuranceSection";
 import PaymentComponent from "@/components/payment/PaymentMethod";
+import ProductOrderComponent from "@/components/payment/ProdOrderComponent";
 
 export default function Payment() {
   return (
@@ -32,6 +33,13 @@ export default function Payment() {
       </div>
 
       {/* Product Ordered */}
+      <div>
+        <ProductOrderComponent
+          productPrice={11795}
+          shippingFee={200}
+          totalPrice={11995}
+        />
+      </div>
 
       {/* Payment Method */}
       <div>

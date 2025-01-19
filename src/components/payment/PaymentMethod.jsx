@@ -124,7 +124,7 @@ const PaymentComponent = ({ productPrice }) => {
   };
 
   return (
-    <div className="border border-gray-300 bg-white p-8 rounded-lg shadow-md w-full max-w-7xl mx-auto">
+    <div className="border border-gray-300 bg-white p-8 rounded-lg shadow-md w-full max-w-7xl mx-auto my-5">
       <div className="tracking-widest font-medium text-sm mb-2 text-gray-500">
         Payment Option
       </div>
